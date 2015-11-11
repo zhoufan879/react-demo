@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="demo"></div>
+		
+		<script type="text/babel">
+			var App = React.createClass({
+				getDefaultProps: function(){
+					return {
+						name: 'zhoufan879'
+					}
+				},
+				
+				statics: {
+					self: this,		// window
+					getProp: function(key){
+						return self;
+					}
+				},
+				
+				componentDidMount: function(){
+					console.log(this.props);
+				},
+				
+				render: function(){
+					console.log(this.props);
+					return <h1>{this.props.name}</h1>;
+				}
+			});		
+			
+			/*
+			ReactDOM.render(
+				<App></App>,
+				document.getElementById('demo')
+			);
+			*/
+			
+			console.log(App.getProp('name'));
+		</script>
+	</body>
+</html>

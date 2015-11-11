@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="demo"></div>
+		
+		<script type="text/babel">
+			var App = React.createClass({
+				handleGetVal: function(){
+					console.log(this.refs.username.getDOMNode());
+					console.dir(this.refs.username);			// HTMLInputElement
+					console.log(this.refs.username.value);
+				},
+				handleReset: function(){
+					this.refs.username.value = '';
+					this.refs.username.focus();
+				},
+				render: function(){
+					return (
+						<div>
+							<input ref="username" /><br />
+							<input type="button" value="Get value" onClick={this.handleGetVal} />
+							<input type="button" value="Reset" onClick={this.handleReset} /> 
+						</div>
+					)
+				}
+			});		
+			
+			ReactDOM.render(
+				<App></App>,
+				document.getElementById('demo')
+			);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="demo"></div>
+		
+		<script type="text/babel">
+			var Out = {
+				print: function(s){
+					console.log('remote', s);
+				}
+			};
+			
+			var Button = React.createClass({
+				mixins: [Out],	
+				
+				// 使用了mixins，组件间则不可以写同名方法 
+				//print: function(s){
+				//	console.log('local', s);
+				//},
+				
+				handleClick: function(){
+					this.print('123456');
+				},
+				
+				render: function(){
+					return (
+						<input type="button" value="click me" onClick={this.handleClick} />
+					)
+				}
+			});
+			
+			ReactDOM.render(
+				<Button></Button>,
+				document.getElementById('demo')
+			);
+			
+		</script>
+	</body>
+</html>

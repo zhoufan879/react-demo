@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="demo"></div>
+		
+		<script type="text/babel">
+			var Hello = React.createClass({
+				render: function(){
+					console.log(this);
+					console.log(this.props);
+					return (
+						<p>
+						Hello, <input placeholder="Your name here" /> !
+						It is {this.props.date.toTimeString()}.
+						</p>
+					);
+				}
+			});
+			
+			// 在定时器渲染的情况下，也只会改变指定区域值，不影响其它DOM，略叼！
+			setInterval(function(){
+				ReactDOM.render(
+					<Hello date={new Date()} />,
+					document.getElementById('demo')
+				);
+			}, 1000);
+			
+		</script>
+	</body>
+</html>

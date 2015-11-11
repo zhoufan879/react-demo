@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="demo"></div>
+		
+		<script type="text/babel">
+			
+			var Avater = React.createClass({
+				render: function(){
+					console.log(this.props);
+					return (
+						<div>
+							<ProfilePic userid={this.props.user.id}></ProfilePic>
+							<ProfileLink username={this.props.user.name}></ProfileLink>
+						</div>	
+					)
+				}	
+			});
+			
+			var ProfilePic = React.createClass({
+				render: function(){
+					return (
+						<img src={'https://avatars3.githubusercontent.com/u/' + this.props.userid + '?v=3&s=300'} />
+					)
+				}
+			});
+			
+			var ProfileLink = React.createClass({
+				render: function(){
+					return (
+						<a href={'https://github.com/' + this.props.username } >
+							{this.props.username}
+						</a>
+					)
+				}
+			});
+			
+			var opt = {
+				user: {
+					id: 6309448,
+					name: 'zhoufan879'
+				}
+			};
+			
+			ReactDOM.render(
+				<Avater {...opt}></Avater>,
+				document.getElementById('demo')
+			);
+			
+		</script>
+	</body>
+</html>

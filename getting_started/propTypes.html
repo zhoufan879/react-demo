@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="demo"></div>
+		
+		<script type="text/babel">
+			
+			var Button = React.createClass({
+				propTypes: {
+					children: React.PropTypes.element.isRequired
+				},
+				
+				render: function(){
+					console.log(this.props);
+					var _txt = this.props && this.props.children ? this.props.children : this.props.text; 
+					return (
+						<input type="button" value={_txt} onClick={this.props.handleClick} />
+					)
+				}	
+			});
+			
+			var opt = {
+				text: 'Submit',
+				handleClick: function(){
+					alert('bingo!');
+				}
+			};
+			
+			ReactDOM.render(
+				<Button {...opt}>提交</Button>,
+				document.getElementById('demo')
+			);
+			
+		</script>
+	</body>
+</html>
