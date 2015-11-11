@@ -1,0 +1,52 @@
+<!DOCTYPE html>                                                                  
+<html>                                                                           
+                                                                                 
+	<head>                                                                       
+		<meta charset="utf-8" />                                                 
+		<title></title>                                                          
+		                               
+		<script src="../bower_components/react/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bower_components/react/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		                                               
+		<script type="text/babel">                                               
+			var Timer = React.createClass({                                      
+				                                                                 
+				getInitialState: function(){                                     
+					return {                                                     
+						_timer: 0                                                
+					}                                                            
+				},                                                               
+				                                                                 
+				tick: function(){                                                
+					this.setState({_timer: this.state._timer + 1});              
+				},                                                               
+				                                                                 
+				componentDidMount: function(){                                   
+					this._interval = setInterval(this.tick, 1000);               
+				},                                                               
+				                                                                 
+				componentWillUnmount: function(){                                
+					clearInterval(this._interval);                               
+				},                                                               
+				                                                                 
+				render: function(){                                              
+					return <h5>Seconds Elapsed: {this.state._timer}</h5>         
+				}                                                                
+				                                                                 
+			});                                                                  
+		                                                                         
+			ReactDOM.render(                                                     
+				<Timer></Timer>,                                                 
+				document.getElementById('content')                               
+			);                                                                   
+		</script>                                                                
+		                                                                         
+	</head>                                                                      
+                                                                                 
+	<body>                                                                       
+		<div id="content"></div>                                                 
+		                                                                         
+	</body>                                                                      
+                                                                                 
+</html>                                                                          
